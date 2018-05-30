@@ -5,7 +5,8 @@ module.exports = {
         "browser": true
     },
     "rules": {
-        "indent": ["error", "tab"]
+        "indent": ["error", "tab"],
+        'no-console': 'off'
     },
     "extends": "eslint:recommended"
 };

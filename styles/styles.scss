@@ -5,12 +5,11 @@ html {
 body {
 	font-family: 'Varela Round', sans-serif;
 	background-color: #6633cc;
-	background: linear-gradient(to bottom, #6633cc, #4433cc);
+	background: linear-gradient(to bottom, #6633cc, #4433cc, #6633cc);
 	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	padding: 0 40px;
+	border-top: 5px solid #f9db03;
+	padding-top: 100px;
 }
 
 .cats {
@@ -23,7 +22,6 @@ body {
 
 .cat__wrapper {
 	width: 25%;
-	min-width: 300px;
 	position: relative;
 	border: 10px solid lighten(#4433cc, 10%);
 	margin: 10px;
@@ -41,11 +39,9 @@ body {
 
 .cat__name {
 	position: absolute;
-	top: -20px;
-	left: 0;
+	top: -10px;
+	left: -10px;
 	padding: 10px;
-	left: 50%;
-	transform: translateX(-50%);
 	background-color: white;
 	color: #4433cc;
 }
@@ -58,4 +54,35 @@ body {
 	padding: 0 0 5px 10px;
 	border-radius: 0 0 0 5px;
 	color: white;
+}
+
+.button__new-cat {
+	position: absolute;
+	top: -15px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	background-color: #f9db03;
+	border: 0;
+	color: #584e01;
+	font-size: 24px;
+	line-height: 1;
+	font-family: 'Varela Round', sans-serif;
+	padding-top: .5em;
+	transition: all, .25s ease-in-out;
+	z-index: 1;
+
+	&:hover {
+		width: 110px;
+		height: 110px;
+		top: -20px;
+		cursor: pointer;
+		background-color: lighten(#f9db03, 10%);
+	}
+
+	&:focus {
+		outline: 0;
+	}
 }

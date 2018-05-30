@@ -1,4 +1,5 @@
 let currentId = 0;
+let newCatButton = document.getElementById('newCatButton')
 
 function getUniqueId() {
 	currentId++;
@@ -8,7 +9,7 @@ function getUniqueId() {
 class cat {
 	constructor(name, filename) {
 		this.name = name;
-		this.filename = "images/" + filename + ".jpg";
+		this.filename = filename;
 		this.clicks = 0;
 		this.id = getUniqueId();
 	}
@@ -39,13 +40,23 @@ class cat {
 	}
 }
 
+function newCat() {
+	let newCatName;
+	fetch('js/cat-names.json')
+		.then(response =>  response.json())
+		.then(json => {
+			newCatName = json[Math.floor(Math.random() * json.length)];
+			return fetch('https://cataas.com/cat');
+		})
+		.then(response => response.blob())
+		.then(blob => {
+			let imageURL = URL.createObjectURL(blob);
+			let newCat = new cat(newCatName, imageURL);
+			newCat.render();
+		})
+		.catch(function(error) {
+			console.log('Error fetching a new cat: ', error.message);
+		});
+}
 
-let allCats = [];
-
-allCats.push(new cat('Chewie', 'chewie'));
-allCats.push(new cat('Poplinre', 'poplinre'))
-allCats.push(new cat('Jetske', 'jetske'))
-
-allCats.forEach(function(element) {
-	element.render();
-});
+newCatButton.addEventListener('click', newCat);
